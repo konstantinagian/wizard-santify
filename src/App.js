@@ -15,6 +15,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <h1>🧙‍♂️🤝🎅</h1>
         {image && (
           <div>
             <img
@@ -23,15 +24,17 @@ function App() {
               src={URL.createObjectURL(image)}
             />
             <br />
-            <button onClick={() => {
-              setImage(null)
-              setResultImage(null)
-            }}>Remove</button>
-            <button onClick={mergeWithSanta}>🎅</button>
+            <div className='buttons'>
+              <button onClick={() => {
+                setImage(null)
+                setResultImage(null)
+              }}>Clear</button>
+              <button onClick={mergeWithSanta}>Santify!</button>
+            </div>
           </div>
         )}
         {resultImage && (
-          <div>
+          <div className='result-image'>
             <img
               alt={"santa-" + image.name ?? "not found"}
               width={"250px"}
