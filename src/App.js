@@ -1,22 +1,33 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
 
 function App() {
+  const [image, setImage] = useState(null);
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        {image && (
+          <div>
+            <img
+              alt={image.name ?? "not found"}
+              width={"250px"}
+              src={URL.createObjectURL(image)}
+            />
+            <br />
+            <button onClick={() => setImage(null)}>Remove</button>
+          </div>
+        )}
+
+        <div>
+          <input
+            className="file1"
+            type="file"
+            onChange={(event) => {
+              setImage(event.target.files[0]);
+            }}
+          />
+        </div>
       </header>
     </div>
   );
